@@ -14,10 +14,13 @@
         height: 1px;
       }
       .logindiv{
-        position: fixed;
+        text-align:center;
         width: 250px;
-        top: 35%;
-        left: 40%;
+        margin: auto;
+        position: relative;
+        top: 50%; /*偏移*/
+        margin-top: -150px;
+        
       }
       .loginusertitle{
         text-align: center;
@@ -39,6 +42,7 @@
       <div class="moren"></div>
     </div>
     <div class="layui-col-md4">
+      <div class="logindivhhh" style="height: 100vh">
       <div class="logindiv">
         <form class="layui-form" action="">
           <div class="loginusertitle"><h1>后台登录</h1></div>
@@ -50,6 +54,7 @@
           </div>
           <button type="button" class="layui-btn loginbutton" lay-submit lay-filter="formDemo">登录</button>
         </form>
+      </div>
       </div>
     </div>
     <div class="layui-col-md4">
