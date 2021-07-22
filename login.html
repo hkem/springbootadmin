@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="js/layui-v2.6.8/layui/css/layui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/layui-v2.6.8/layui/layui.js"></script>
+    <script src="js/jquery/jquery-3.3.1.min.js"></script>
+    
+    <style>
+      .moren{
+        width: 1px;
+        height: 1px;
+      }
+      .logindiv{
+        position: fixed;
+        width: 250px;
+        top: 35%;
+        left: 40%;
+      }
+      .loginusertitle{
+        text-align: center;
+      }
+      .loginbutton{
+        width: 100%;
+        margin-top: 20px;
+      }
+      .loginuser{
+        width: 100%;
+        margin-top: 20px;
+      }
+    </style>
+</head>
+<body>
+  <div class="layui-container"> 
+  <div class="layui-row">
+    <div class="layui-col-md4">
+      <div class="moren"></div>
+    </div>
+    <div class="layui-col-md4">
+      <div class="logindiv">
+        <form class="layui-form" action="">
+          <div class="loginusertitle"><h1>后台登录</h1></div>
+          <div class="loginuser">
+            <input type="text" name="username" id="username" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
+          </div>
+          <div class="loginuser">
+            <input type="text" name="pass" id="pass" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+          </div>
+          <button type="button" class="layui-btn loginbutton" lay-submit lay-filter="formDemo">登录</button>
+        </form>
+      </div>
+    </div>
+    <div class="layui-col-md4">
+      <div class="moren"></div>
+    </div>
+  </div>
+  </div>
+  <script>
+    layui.use('form', function(){
+  var form = layui.form;
+
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    var username = $("#username").val();
+    var pass = $("#pass").val();
+    if(username == ""){
+      layer.msg("账号不能为空");
+      return;
+    }
+    if(pass == ""){
+      layer.msg("密码不能为空");
+      return;
+    }
+    $.ajax({
+        url: '/admin/loginpost',
+        data: {username:username,pass:pass},
+        success: function (res) {
+            console.log(res);
+        }
+    });
+
+
+    return false;
+  });
+});
+
+
+
+  </script>
+  </body>
+  </html>
